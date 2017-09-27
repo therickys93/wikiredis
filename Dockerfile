@@ -1,5 +1,5 @@
 FROM alpine
-RUN apk update
+RUN apk update && apk upgrade
 RUN apk add redis
 WORKDIR /data
 EXPOSE 6379
