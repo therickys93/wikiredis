@@ -8,3 +8,13 @@ after_success:
 - if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"; docker push therickys93/wikiredis;
   fi
+- sh set_tags.sh
+deploy:
+  provider: releases
+  file_glob: "true"
+  skip_cleanup: true
+  api_key:
+    secure: nZ8I8cFNfk1Ash0rtK3uoQnfmDMhQEcKgKzWNLQNkNORJ6S5DuPB5C4wYTkP1K9SeQTMhiMxtHVw+WQusgwcge6qOOPXtwzvScRvAwvzkor+3etwPBZ2zaknwxZ4APVwOz8m0lstG1T4edccLXrDR7G35sJeTZggzr3VQv4GPD3PVqLj31ns0N6eK2cvZb1g757qCqpXF/VIrY1fqlnHA/YEMby75ooMzGdrR08n9JyvGcAVsLqgRvJlqipq9VhbKqf9TjXsYn/grzT6YOl417BtgeBa6DntZWEuczo4zv9t2AMZmzLrtABuqcr+jOOYm7nJ+UEvwNYLo1+lfQ8u6V6JA4jtCww89lZN0nL+7Oi4e0PRXERG/b4lIO7CCg/FkaKtSnDmhgfnkQPrlFv2JEkm0umT28ldQdVRTvd6o9DhCAVuf1cTGn35eD9fDyQGAk/mE2mpqk26jGY+S4Ees51yagrX4a/fr8k+ATn1XOG4cbK6VGYaJFWwd+AIYfHkJh19zuDZ46e0zT2z65htxAgMxf/lyMpErr0oKXKsmGftQKvpLnk49/f013a9F/Im+Avscwi5t6d25sAzlTtCrKrQqZ2cdw/Gcoe8JTmwFNuk6zTHIwOfBg43HfnJlq5k4Q4r07h67lJLgFEXNgZnw+w+cKriKIrcUjDbbJJTf64=
+  on:
+    repo: therickys93/wikiredis
+    branch: master
