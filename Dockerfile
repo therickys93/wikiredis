@@ -3,7 +3,6 @@ ENV redis redis-4.0.6
 RUN apk update && \
 	apk add make build-base linux-headers && \
 	wget http://download.redis.io/releases/${redis}.tar.gz && \
-	wget http://download.redis.io/redis-stable/redis.conf && \
 	tar xzf ${redis}.tar.gz && \
 	cd ${redis}/ && \
 	make distclean && make && mv src/redis-server /usr/bin/ && \
