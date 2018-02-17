@@ -10,4 +10,4 @@ RUN apk update && \
 	cd .. && rm -Rf ${redis}/ && rm ${redis}.tar.gz && \
 	apk del build-base make linux-headers && rm -rf /var/cache/apk/*
 RUN redis-server -v 
-CMD redis-server /redis.conf
+CMD redis-server --protected-mode no
