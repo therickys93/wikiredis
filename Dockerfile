@@ -8,5 +8,4 @@ RUN apk update && \
 	make distclean && make && mv src/redis-server /usr/bin/ && \
 	cd .. && rm -Rf ${redis}/ && rm ${redis}.tar.gz && \
 	apk del build-base make linux-headers && rm -rf /var/cache/apk/*
-RUN redis-server -v 
 CMD redis-server --protected-mode no
